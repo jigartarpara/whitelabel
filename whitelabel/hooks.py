@@ -145,3 +145,4 @@ fixtures = [
 # 	"frappe.utils.change_log.show_update_popup": "whitelabel.api.ignore_update_popup"
 # }
 
+app_include_desktop = "/whitelabel/config/desktop.py"

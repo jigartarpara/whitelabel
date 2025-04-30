@@ -3,6 +3,8 @@ $(window).on('load', function() {
         if (frappe.boot.whitelabel_setting.show_help_menu) {
             // $('.dropdown-help').css('display','block');
             $('.dropdown-help').attr('style', 'display: block !important');
+        }else{
+            $('.dropdown-help').attr('style', 'display: none !important');
         }
         if (frappe.boot.whitelabel_setting.logo_width) {
             $('.app-logo').css('width',frappe.boot.whitelabel_setting.logo_width+'px');
