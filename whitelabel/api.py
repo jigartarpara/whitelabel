@@ -3,6 +3,7 @@ import frappe
 import json
 from frappe.utils import floor, flt, today, cint
 from frappe import _
+from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
 
 def whitelabel_patch():
 	#delete erpnext welcome page 
@@ -13,7 +14,21 @@ def whitelabel_patch():
 	update_field_label()
 	if cint(get_frappe_version()) >= 13 and not frappe.db.get_single_value('Whitelabel Setting', 'ignore_onboard_whitelabel'):
 		update_onboard_details()
+	
+	create_custom_fields()
 
+def create_custom_fields():
+	create_custom_fields(CUSTOM_FIELDS, ignore_validate=True)
+CUSTOM_FIELDS = {
+    "Workspace":[
+        {
+            "fieldname": "custom_image_icon",
+            "fieldtype": "Check",
+            "insert_after": "icon",
+            "label": "custom_image_icon",
+        },
+	]
+}
 
 def update_field_label():
 	"""Update label of section break in employee doctype"""
